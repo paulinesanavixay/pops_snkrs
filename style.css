@@ -39,9 +39,6 @@ header.scrolled {
 
 header .logo {
     width: 120px;
-    position: relative; 
-    z-index: 1001;  
-    cursor: pointer; 
 }
 
 header .navbar a {
@@ -67,191 +64,172 @@ header .icons a:hover {
 }
 
 /* ================= HOME ================= */
-/* ================= HOME / CAROUSEL ================= */
-.home {
-    padding: 0;
-    position: relative;
+.home{
+  padding:0;
+  position:relative;
 }
 
-/* Conteneur de chaque slide */
-.home .slide-container {
-    display: none;          /* toutes les slides cachées par défaut */
-    min-height: 100vh;      /* prend toute la hauteur de la fenêtre */
-    width: 100%;
-    flex-wrap: wrap;
+.home .slide-container .slide{
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap:1.5rem;
+  padding:0 9%;
+  padding-top: 9rem;
 }
 
-.home .slide-container.active {
-    display: flex;          /* la slide active devient visible */
-    align-items: center;
-    gap: 1.5rem;
-    padding: 0 9%;
-    padding-top: 9rem;
+.home .slide-container .slide .content{
+  flex:1 1 40rem;
+  animation: slideContent .5s linear 1s backwards;
 }
 
-/* Slide individuel */
-.home .slide-container .slide {
-    flex: 1 1 100%;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    min-height: 100vh;
-    position: relative;
+@keyframes slideContent{
+  0%{
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
 }
 
-/* Contenu texte */
-.home .slide-container .slide .content {
-    flex: 1 1 40rem;
-    animation: slideContent 0.5s linear 1s backwards;
+.home .slide-container .slide .image{
+  flex:1 1 50rem;
+  padding-bottom: 15rem;
+  position: relative;
+  z-index: 0;
 }
 
-@keyframes slideContent {
-    0% {
-        opacity: 0;
-        transform: translateX(-10rem);
-    }
+.home .slide-container .slide .image .shoe{
+  width:100%;
+  transform: rotate(-35deg);
+  animation:shoe .3s linear;
 }
 
-/* Images et chaussures */
-.home .slide-container .slide .image {
-    flex: 1 1 50rem;
-    padding-bottom: 15rem;
-    position: relative;
-    z-index: 0;
+@keyframes shoe{
+  0%{
+    transform: rotate(0deg) scale(.5);
+  }
 }
 
-.home .slide-container .slide .image .shoe {
-    width: 100%;
-    transform: rotate(-35deg);
-    animation: shoe 0.3s linear;
+.home .slide-container .slide .image .text{
+  position: absolute;
+  top:0; left:0;
+  z-index: -1;
+  animation:shoeText .5s linear .5s backwards;
 }
 
-@keyframes shoe {
-    0% {
-        transform: rotate(0deg) scale(0.5);
-    }
+@keyframes shoeText{
+  0%{
+    opacity: 0;
+    top:-10rem;
+  }
 }
 
-/* Texte décoratif derrière la chaussure */
-.home .slide-container .slide .image .text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-    animation: shoeText 0.5s linear 0.5s backwards;
+.home .slide-container .slide .content span{
+  font-size: 2rem;
+  color:var(--orange);
 }
 
-@keyframes shoeText {
-    0% {
-        opacity: 0;
-        top: -10rem;
-    }
+.home .slide-container .slide .content h3{
+  font-size: 5rem;
+  color:var(--black);
 }
 
-/* Styles du texte */
-.home .slide-container .slide .content span {
-    font-size: 2rem;
-    color: var(--orange);
+.home .slide-container .slide .content p{
+  font-size: 1.7rem;
+  color:#666;
+  padding:.5rem 0;
 }
 
-.home .slide-container .slide .content h3 {
-    font-size: 5rem;
-    color: var(--black);
+.home .slide-container:nth-child(1) .slide{
+  background:url(../images/home-bg-1.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
-.home .slide-container .slide .content p {
-    font-size: 1.7rem;
-    color: #666;
-    padding: 0.5rem 0;
+.home .slide-container:nth-child(2) .slide{
+  background:url(../images/home-bg-2.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
-/* Backgrounds des slides */
-.home .slide-container:nth-child(1) .slide {
-    background: url('images/home-bg-1.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
+.home .slide-container:nth-child(3) .slide{
+  background:url(../images/home-bg-3.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
-.home .slide-container:nth-child(2) .slide {
-    background: url('images/home-bg-2.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
+.home .slide-container{
+  display: none;
 }
 
-.home .slide-container:nth-child(3) .slide {
-    background: url('images/home-bg-3.jpg') no-repeat;
-    background-size: cover;
-    background-position: center;
+.home .slide-container.active{
+  display: block;
 }
 
-/* Boutons précédent / suivant */
 .home #prev,
-.home #next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    border-radius: 50%;
-    z-index: 100;
-    height: 5rem;
-    width: 5rem;
-    line-height: 4.5rem;
-    font-size: 2rem;
-    color: var(--black);
-    border: 0.2rem solid var(--black);
-    cursor: pointer;
-    text-align: center;
+.home #next{
+  position: absolute;
+  top:50%; 
+  transform:translateY(-50%);
+  border-radius: 50%;
+  z-index: 100;
+  height:5rem;
+  width:5rem;
+  line-height: 4.5rem;
+  font-size: 2rem;
+  color:var(--black);
+  border:.2rem solid var(--black);
+  cursor: pointer;
+  text-align: center;
 }
 
 .home #prev:hover,
-.home #next:hover {
-    color: #fff;
-    background: var(--orange);
+.home #next:hover{
+  color:#fff;
+  background:var(--orange);
 }
 
-.home #prev {
-    left: 3rem;
+.home #prev{
+  left:3rem;
 }
 
-.home #next {
-    right: 3rem;
+.home #next{
+  right:3rem;
 }
 
-/* Bouton “add to cart” */
+@media (max-width: 768px) {
+    .navbar {
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: #fff;
+        border-top: .1rem solid rgba(0,0,0,.1);
+        display: none; /* Caché par défaut */
+    }
+    .navbar.active {
+        display: block; /* S'affiche quand on clique */
+    }
+}
+/* Style du bouton du carrousel */
 .home .slide .content .btn {
     display: inline-block;
     margin-top: 1rem;
     padding: 10px 30px;
-    background: var(--orange);
-    color: #fff;
+    background: #e60023;      /* Le rouge Nike */
+    color: #fff;              /* Écriture blanche */
     font-size: 1.7rem;
     font-weight: 500;
     text-transform: capitalize;
     text-decoration: none;
     border-radius: 5px;
-    transition: all 0.3s ease;
+    transition: all .3s ease;
     cursor: pointer;
     border: none;
 }
 
+/* Effet au survol (hover) */
 .home .slide .content .btn:hover {
-    background: #111;
-    letter-spacing: 1px;
-}
-
-/* Responsive navbar mobile */
-@media (max-width: 768px) {
-    .navbar {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        right: 0;
-        background: #fff;
-        border-top: 0.1rem solid rgba(0,0,0,0.1);
-        display: none;
-    }
-    .navbar.active {
-        display: block;
-    }
+    background: #111;         /* Devient noir au survol */
+    letter-spacing: 1px;      /* Petit effet d'écartement des lettres */
 }
 
 /* ================= SERVICES ================= */
@@ -435,5 +413,3 @@ header .icons a:hover {
 .footer a:hover {
     color: #e60023;
 }
-
-
