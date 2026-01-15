@@ -39,6 +39,9 @@ header.scrolled {
 
 header .logo {
     width: 120px;
+    position: relative; 
+    z-index: 1001;  
+    cursor: pointer; 
 }
 
 header .navbar a {
@@ -413,3 +416,4 @@ header .icons a:hover {
 .footer a:hover {
     color: #e60023;
 }
+
