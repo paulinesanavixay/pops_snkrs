@@ -206,7 +206,7 @@ header .icons a:hover {
         display: none; /* Caché par défaut */
     }
     .navbar.active {
-        display: block; /* S'affiche quand on clique */
+        display: block; 
     }
 }
 /* Style du bouton du carrousel */
@@ -215,7 +215,7 @@ header .icons a:hover {
     margin-top: 1rem;
     padding: 10px 30px;
     background: #e60023;      /* Le rouge Nike */
-    color: #fff;              /* Écriture blanche */
+    color: #fff;              
     font-size: 1.7rem;
     font-weight: 500;
     text-transform: capitalize;
@@ -228,8 +228,8 @@ header .icons a:hover {
 
 /* Effet au survol (hover) */
 .home .slide .content .btn:hover {
-    background: #111;         /* Devient noir au survol */
-    letter-spacing: 1px;      /* Petit effet d'écartement des lettres */
+    background: #111;         
+    letter-spacing: 1px;      
 }
 
 /* ================= SERVICES ================= */
